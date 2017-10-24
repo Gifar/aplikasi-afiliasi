@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Vali Admin</title>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    -->
+</head>
+<body>
+<section class="material-half-bg">
+    <div class="cover"></div>
+</section>
+<section class="login-content">
+    <div class="logo">
+        <h2 style="font-family: -apple-system;">STEI TAZKIA</h2>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <center><h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>Register</h3></center>
+            <hr>
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Name</label>
+                        <div class="col-md-8">
+                            <input class="form-control" type="text" placeholder="Masukan Nama Lengkap">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Nomor Telepon</label>
+                        <div class="col-md-8">
+                            <input class="form-control col-md-8" type="text" placeholder="Masukan Nomor Telepon">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Nomor Rekening</label>
+                        <div class="col-md-8">
+                            <input class="form-control col-md-8" type="text" placeholder="Masukan Nomor Rekening">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Email</label>
+                        <div class="col-md-8">
+                            <input class="form-control col-md-8" type="email" placeholder="Masukan Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3">Kategori</label>
+                        <div class="col-md-9">
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" name="rad" id="rad1" value="1" class="rad"/>Internal
+                                </label>
+                            </div>
+                            <div class="radio-inline">
+                                <label>
+                                    <input type="radio" name="rad" id="rad2" value="2" class="rad"/>Eksternal
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" id="form1" style="display: none">
+                        <label class="control-label col-md-3">Posisi</label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="posisi" id="posisi">
+                                <option>Dosen</option>
+                                <option>Mahasiswa</option>
+                                <option>SDM</option>
+                                <option value="ada">Lainnya</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="label" class="control-label col-md-3" hidden>Lainnya</label>
+                        <div class="col-md-8">
+                            <input class="form-control" placeholder="Masukan Posisi Anda" type="hidden" name="no_ktp" id="lainnya" value="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-3">
+                        <a class="btn btn-default icon-btn" href="../login/login">
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Register
+                        </a>
+                        &nbsp;&nbsp;&nbsp;
+                        <a class="btn btn-default icon-btn" href="../login/login">
+                            <i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+<script src="../js/jquery-2.1.4.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/plugins/pace.min.js"></script>
+<script src="../js/main.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $(":radio.rad").click(function(){
+            $("#form1, #form2").hide()
+            if($(this).val() == "1"){
+                $("#form1").show();
+            }else{
+                $("#form2").show();
+            }
+        });
+    });
+
+    $(window).load(function(){
+        $("#posisi").change(function() {
+            console.log($("#posisi option:selected").val());
+            if ($("#posisi option:selected").val() == 'ada') {
+                $('#lainnya').prop('type', 'text');
+                $('#label').prop('hidden', false);
+
+            } else {
+                $('#lainnya').prop('hidden', 'true');
+                $('#label').prop('hidden', 'true');
+                $('#lainnya').prop('type', 'hidden');
+            }
+        });
+    });
+</script>
+</html>
